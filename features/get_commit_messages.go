@@ -9,14 +9,13 @@ import (
 	"github.com/go-git/go-git/v5/plumbing/object"
 )
 
+// Pass path to the git repo into (repoPath) and pass a bool value into (getTodaysOnly)
+// whether to get all commit history from head at current branch or only just todays.
 func GetCommitMessages(repoPath string, getTodaysOnly bool) []entities.CommitMessages {
-	// WARN: For testing purposes only
-	// repo_absolute_path := "/home/n1h41/development/Go/cli/update-google-sheet-cli"
-	repo_absolute_path := "/mnt/d/nihal/Development/Flutter/works/raf-pharmacy/"
 
 	var commitMessages []entities.CommitMessages
 
-	r, err := git.PlainOpen(repo_absolute_path)
+	r, err := git.PlainOpen(repoPath)
 	if err != nil {
 		panic(err)
 	}
