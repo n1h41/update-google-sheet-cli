@@ -16,7 +16,7 @@ type CommitMessages struct {
 func GetCommitMessages() {
 	// WARN: For testing purposes only
 	// repo_absolute_path := "/home/n1h41/development/Go/cli/update-google-sheet-cli"
-	repo_absolute_path := "/home/n1h41/development/Node/chat-api"
+	repo_absolute_path := "/mnt/d/nihal/Development/Flutter/works/raf-pharmacy/"
 
 	r, err := git.PlainOpen(repo_absolute_path)
 	if err != nil {
