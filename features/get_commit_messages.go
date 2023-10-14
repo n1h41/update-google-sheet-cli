@@ -9,14 +9,18 @@ import (
 )
 
 type CommitMessages struct {
-  Message string
-  DateTime time.Time
+	Message  string
+	DateTime time.Time
 }
 
-func GetCommitMessages() {
-	// WARN: For testing purposes only
+// GetCommitMessages returns a list of CommitMessages for a given repository
+// Parameters:
+// 	repoPath: string
+// Returns:
+// 	[]CommitMessages
+func GetCommitMessages(repoPath string) {
 	// repo_absolute_path := "/home/n1h41/development/Go/cli/update-google-sheet-cli"
-	repo_absolute_path := "/home/n1h41/development/Node/chat-api"
+	repo_absolute_path := repoPath
 
 	r, err := git.PlainOpen(repo_absolute_path)
 	if err != nil {
@@ -39,7 +43,7 @@ func GetCommitMessages() {
 
 	// Iterate commits
 	logs.ForEach(func(c *object.Commit) error {
-    fmt.Println(c.Author.When.Local().Format("02/01/2006"))
+		fmt.Println(c.Author.When.Local().Format("02/01/2006"))
 		return nil
 	})
 }
